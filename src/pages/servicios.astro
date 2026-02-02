@@ -1,0 +1,27 @@
+---
+import Layout from '../layouts/Layout.astro';
+import servicesData from '../content/pages/services.json';
+import ServicesList from '../components/ServicesList';
+import PageHero from '../components/PageHero';
+
+// If "intro" is markdown, we might need a parser or just render as text if simple.
+// The data has simple text currently.
+---
+
+<Layout title={servicesData.title}>
+    <PageHero
+        title={servicesData.title}
+        subtitle={servicesData.intro}
+        image={servicesData.headerImage}
+        client:load
+    />
+
+    <section class="py-20">
+        <div class="container mx-auto px-6">
+            <ServicesList
+                client:visible
+                items={servicesData.items}
+            />
+        </div>
+    </section>
+</Layout>

@@ -1,0 +1,77 @@
+---
+import Layout from '../layouts/Layout.astro';
+import HeroSlider from '../components/HeroSlider';
+import homeData from '../content/pages/home.json';
+
+// Fetch Rooms
+const rooms = await Astro.glob('../content/rooms/*.json');
+---
+
+<Layout title="Home">
+	<HeroSlider
+		client:load
+		slides={homeData.heroSlider}
+	/>
+
+	{/* Intro SEO Section */}
+	<section class="py-20 md:py-32 bg-white text-center">
+		<div class="container mx-auto px-6 max-w-3xl">
+			<h2
+				class="text-3xl md:text-4xl font-serif text-patagonia-deep mb-8 font-medium"
+			>
+				{homeData.intro.title}
+			</h2>
+			<p class="text-lg text-stone-600 leading-relaxed font-light">
+				{homeData.intro.text}
+			</p>
+		</div>
+	</section>
+
+	{/* Rooms Section */}
+	<section class="py-20 bg-patagonia-snow">
+		<div class="container mx-auto px-6">
+			<div class="text-center mb-16">
+				<span
+					class="text-patagonia-lake uppercase tracking-widest text-xs font-semibold"
+					>Alojamiento</span
+				>
+				<h3 class="text-3xl font-serif text-patagonia-deep mt-2">
+					Nuestras Habitaciones
+				</h3>
+			</div>
+
+			<div class="grid md:grid-cols-3 gap-8">
+				{
+					rooms.map((room) => (
+						<article class="group bg-white rounded-lg overflow-hidden shadow-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1">
+							<div class="aspect-[4/3] overflow-hidden">
+								<img
+									src={
+										room.gallery[0]?.image ||
+										'/images/placeholder.jpg'
+									}
+									alt={room.gallery[0]?.alt || room.title}
+									class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
+								/>
+							</div>
+							<div class="p-8">
+								<h4 class="text-xl font-serif text-patagonia-deep mb-3">
+									{room.title}
+								</h4>
+								<p class="text-sm text-stone-500 mb-6 line-clamp-3">
+									{room.shortDescription}
+								</p>
+								<a
+									href={`/habitaciones/${room.slug}`}
+									class="inline-block text-xs font-bold uppercase tracking-wider text-patagonia-lake border-b border-patagonia-lake pb-1 hover:text-patagonia-deep hover:border-patagonia-deep transition-colors"
+								>
+									Ver Detalle
+								</a>
+							</div>
+						</article>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Layout>

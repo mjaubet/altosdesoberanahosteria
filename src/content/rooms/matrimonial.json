@@ -1,0 +1,28 @@
+{
+  "title": "Habitación Doble Matrimonial",
+  "slug": "doble-matrimonial",
+  "shortDescription": "Ideal para parejas, amplia y luminosa con vista al lago.",
+  "longDescription": "Nuestra Habitación Doble Matrimonial ofrece el equilibrio perfecto entre confort y calidez patagónica. Equipada con una cama King Size, ropa de cama de primera calidad y amplios ventanales que enmarcan la inmensidad del Lago Argentino.\\n\\nDisfrute de atardeceres únicos desde la privacidad de su habitación.",
+  "amenities": [
+    "Cama King Size",
+    "Baño Privado con Bañera",
+    "Secador de Pelo",
+    "Calefacción Central",
+    "WiFi",
+    "Amenities Ecológicos"
+  ],
+  "gallery": [
+    {
+      "image": "/images/uploads/habitacion-matri-2.jpg",
+      "alt": "Cama matrimonial"
+    },
+    {
+      "image": "/images/uploads/matri-5.jpg",
+      "alt": "Cama matrimonial"
+    },
+    {
+      "image": "/images/uploads/matri-twin.jpg",
+      "alt": "Matrimonial mas twin"
+    }
+  ]
+}

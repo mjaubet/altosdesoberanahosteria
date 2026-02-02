@@ -1,0 +1,70 @@
+---
+import Layout from '../layouts/Layout.astro';
+import hosteriaData from '../content/pages/hosteria.json';
+import PageHero from '../components/PageHero';
+
+// Simple check for markdown content. In a real scenario we'd use a Markdown component or <Markdown />
+const contentHtml = hosteriaData.content.replace(/\n/g, '<br />');
+---
+
+<Layout title={hosteriaData.title}>
+    <PageHero
+        title={hosteriaData.title}
+        subtitle={hosteriaData.subtitle}
+        image={hosteriaData.image}
+        client:load
+    />
+
+    <div class="py-24 container mx-auto px-6">
+        <div class="flex flex-col md:flex-row gap-16 items-center">
+            {/* Text Content */}
+            <div class="md:w-1/2 order-2 md:order-1">
+                <span
+                    class="text-patagonia-lake uppercase tracking-widest text-xs font-bold mb-4 block"
+                >
+                    Sobre Nosotros
+                </span>
+                <h2
+                    class="text-3xl md:text-4xl font-serif text-patagonia-deep mb-8 leading-tight"
+                >
+                    {hosteriaData.title}
+                </h2>
+                <div
+                    class="text-stone-600 leading-relaxed text-lg font-light space-y-6 text-justify"
+                    set:html={contentHtml}
+                />
+            </div>
+
+            {/* Images - Stacked/Collage Effect */}
+            <div class="md:w-1/2 relative h-[500px] w-full order-1 md:order-2">
+                {/* Main Image */}
+                <div
+                    class="absolute top-0 right-0 w-[85%] h-[80%] z-10 shadow-2xl rounded-sm overflow-hidden transform md:translate-x-4 bg-stone-200"
+                >
+                    <img
+                        src={hosteriaData.image}
+                        alt={hosteriaData.title}
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://placehold.co/800x600/E3DDD3/8D7F71?text=Subir+Imagen'"
+                    />
+                </div>
+                {/* Secondary Image */}
+                <div
+                    class="absolute bottom-0 left-0 w-[65%] h-[60%] z-20 shadow-xl rounded-sm overflow-hidden transform md:-translate-x-4 border-8 border-white bg-stone-100"
+                >
+                    <img
+                        src={hosteriaData.secondaryImage}
+                        alt={hosteriaData.subtitle}
+                        class="w-full h-full object-cover"
+                        onerror="this.src='https://placehold.co/600x400/64748B/FFFFFF?text=Subir+Imagen'"
+                    />
+                </div>
+                {/* Decorative element */}
+                <div
+                    class="absolute -z-10 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-patagonia-earth/5 rounded-full blur-3xl"
+                >
+                </div>
+            </div>
+        </div>
+    </div>
+</Layout>

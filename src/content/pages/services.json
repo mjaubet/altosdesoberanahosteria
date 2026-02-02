@@ -1,0 +1,37 @@
+{
+  "headerImage": "/images/uploads/frente-noche.jpg",
+  "title": "Nuestros Servicios",
+  "intro": "Las habitaciones cuentan con baño privado, calefacción central, WiFi y vista al Lago Argentino. Además contamos con salón para desayunos y amplio parque.",
+  "items": [
+    {
+      "icon": "Wifi",
+      "title": "Conectividad",
+      "description": "WiFi gratuito de alta velocidad en todas las áreas de la hostería."
+    },
+    {
+      "icon": "Heater",
+      "title": "Calefacción Central",
+      "description": "Temperatura ideal en cada rincón para disfrutar del clima patagónico con confort."
+    },
+    {
+      "icon": "Bath",
+      "title": "Baño Privado",
+      "description": "Todas nuestras habitaciones cuentan con baño privado totalmente equipado."
+    },
+    {
+      "icon": "Coffee",
+      "title": "Desayuno Artesanal",
+      "description": "Comience el día con nuestro desayuno buffet elaborado con productos locales."
+    },
+    {
+      "icon": "Car",
+      "title": "Estacionamiento",
+      "description": "Estacionamiento gratuito a disposición de nuestros huéspedes."
+    },
+    {
+      "icon": "MounatinSnow",
+      "title": "Vistas Panorámicas",
+      "description": "Ubicación privilegiada con vista directa al Lago Argentino y la Bahía Redonda."
+    }
+  ]
+}

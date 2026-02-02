@@ -1,0 +1,22 @@
+---
+import Layout from '../layouts/Layout.astro';
+import GalleryComponent from '../components/Gallery';
+import galleryData from '../content/pages/gallery.json';
+import PageHero from '../components/PageHero';
+---
+
+<Layout title="Galería">
+    <PageHero
+        title={galleryData.title}
+        subtitle={galleryData.intro}
+        image={galleryData.headerImage}
+        client:load
+    />
+
+    <div class="py-20 container mx-auto px-6 min-h-screen">
+        <GalleryComponent
+            client:load
+            images={galleryData.images}
+        />
+    </div>
+</Layout>

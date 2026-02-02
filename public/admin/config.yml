@@ -1,0 +1,130 @@
+backend:
+  name: github
+  repo: mjaubet/altosdesoberanahosteria
+  branch: main
+  base_url: https://altosdesoberanacalafate.com.ar # Production URL for auth
+  auth_endpoint: api/auth # Endpoint relative to base_url
+
+local_backend: true
+
+media_folder: "public/images/uploads"
+public_folder: "/images/uploads"
+
+collections:
+  - name: "settings"
+    label: "Configuración Global"
+    files:
+      - name: "global"
+        label: "Ajustes Generales"
+        file: "src/content/settings/global.json"
+        fields:
+          - { label: "Logo", name: "logo", widget: "image" }
+          - { label: "Teléfono", name: "phone", widget: "string" }
+          - { label: "WhatsApp", name: "whatsapp", widget: "string" }
+          - { label: "Email", name: "email", widget: "string" }
+          - { label: "Dirección", name: "address", widget: "string" }
+          - { label: "Instagram", name: "instagram", widget: "string", required: false }
+          - { label: "Facebook", name: "facebook", widget: "string", required: false }
+
+  - name: "pages"
+    label: "Páginas"
+    files:
+      - name: "home"
+        label: "Home"
+        file: "src/content/pages/home.json"
+        fields:
+          - label: "Hero Slider"
+            name: "heroSlider"
+            widget: "list"
+            fields:
+              - { label: "Imagen", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+          - label: "Intro SEO"
+            name: "intro"
+            widget: "object"
+            fields:
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Texto Rico", name: "text", widget: "markdown" }
+
+      - name: "hosteria"
+        label: "Hostería (Nosotros)"
+        file: "src/content/pages/hosteria.json"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Subtítulo", name: "subtitle", widget: "string" }
+          - { label: "Contenido Principal", name: "content", widget: "markdown" }
+          - { label: "Imagen Destacada", name: "image", widget: "image" }
+          - { label: "Imagen Secundaria", name: "secondaryImage", widget: "image" }
+
+      - name: "services"
+        label: "Servicios"
+        file: "src/content/pages/services.json"
+        fields:
+          - { label: "Header Image", name: "headerImage", widget: "image" }
+          - { label: "Título Intro", name: "title", widget: "string" }
+          - { label: "Texto Intro", name: "intro", widget: "markdown" }
+          - label: "Lista Servicios"
+            name: "items"
+            widget: "list"
+            fields:
+              - { label: "Icono (Nombre Lucide)", name: "icon", widget: "string" }
+              - { label: "Título", name: "title", widget: "string" }
+              - { label: "Descripción", name: "description", widget: "string" }
+
+      - name: "rooms_index"
+        label: "Página Habitaciones (Intro)"
+        file: "src/content/pages/habitaciones.json"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto Intro", name: "intro", widget: "text" }
+          - { label: "Imagen Header", name: "headerImage", widget: "image" }
+
+      - name: "gallery"
+        label: "Galería"
+        file: "src/content/pages/gallery.json"
+        fields:
+          - { label: "Título", name: "title", widget: "string", default: "Galería" }
+          - { label: "Texto Intro", name: "intro", widget: "text", default: "Descubra nuestros rincones." }
+          - { label: "Imagen Header", name: "headerImage", widget: "image" }
+          - label: "Imágenes"
+            name: "images"
+            widget: "list"
+            fields:
+              - { label: "Imagen", name: "image", widget: "image" }
+              - { label: "Alt Text", name: "alt", widget: "string" }
+              - label: "Categoría"
+                name: "category"
+                widget: "select"
+                options: ["Habitaciones", "Entorno", "Interiores"]
+
+      - name: "contact"
+        label: "Contacto"
+        file: "src/content/pages/contacto.json"
+        fields:
+          - { label: "Título", name: "title", widget: "string" }
+          - { label: "Texto Intro", name: "intro", widget: "text" }
+          - { label: "Imagen Header", name: "headerImage", widget: "image" }
+          - { label: "URL del Mapa (Google Maps Embed)", name: "mapUrl", widget: "string", hint: "Pega aquí la URL del iframe de Google Maps" }
+
+  - name: "rooms"
+    label: "Habitaciones"
+    folder: "src/content/rooms"
+    create: true
+    slug: "{{slug}}"
+    extension: "json"
+    fields:
+      - { label: "Título", name: "title", widget: "string" }
+      - { label: "Slug", name: "slug", widget: "string" }
+      - { label: "Descripción Corta", name: "shortDescription", widget: "text" }
+      - { label: "Descripción Larga", name: "longDescription", widget: "markdown" }
+      - label: "Comodidades"
+        name: "amenities"
+        widget: "list"
+        summary: "{{fields.item}}"
+        field: { label: "Item", name: "item", widget: "string" }
+      - label: "Galería"
+        name: "gallery"
+        widget: "list"
+        fields:
+          - { label: "Imagen", name: "image", widget: "image" }
+          - { label: "Alt", name: "alt", widget: "string" }

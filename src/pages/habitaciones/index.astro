@@ -1,0 +1,75 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { ArrowRight } from 'lucide-react';
+import PageHero from '../../components/PageHero';
+import indexData from '../../content/pages/habitaciones.json';
+
+// Fetch Rooms
+const rooms = await Astro.glob('../../content/rooms/*.json');
+---
+
+<Layout title="Habitaciones">
+    <PageHero
+        title={indexData.title}
+        subtitle={indexData.intro}
+        image={indexData.headerImage}
+        client:load
+    />
+
+    <div class="py-24 container mx-auto px-6">
+        <div class="grid gap-20">
+            {
+                rooms.map((room, index) => (
+                    <article
+                        class={`flex flex-col md:flex-row gap-12 items-center ${index % 2 !== 0 ? 'md:flex-row-reverse' : ''}`}
+                    >
+                        {/* Image */}
+                        <div class="w-full md:w-1/2 aspect-[4/3] overflow-hidden rounded-sm shadow-lg group cursor-pointer relative bg-stone-200">
+                            <a href={`/habitaciones/${room.slug}`}>
+                                <div class="absolute inset-0 bg-black/ opacity-0 group-hover:opacity-10 transition-opacity z-10" />
+                                <img
+                                    src={room.gallery[0]?.image}
+                                    alt={room.title}
+                                    class="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700"
+                                    onerror="this.src='https://placehold.co/800x600/E3DDD3/8D7F71?text=Ver+Habitación'"
+                                />
+                            </a>
+                        </div>
+
+                        {/* Content */}
+                        <div class="w-full md:w-1/2 md:p-8 text-center md:text-left">
+                            <span class="text-patagonia-lake uppercase tracking-widest text-xs font-bold mb-2 block">
+                                Vista al Lago
+                            </span>
+                            <h2 class="text-3xl font-serif text-patagonia-deep mb-4">
+                                {room.title}
+                            </h2>
+                            <p class="text-stone-600 mb-8 leading-relaxed font-light">
+                                {room.shortDescription}
+                            </p>
+
+                            <div class="mb-8">
+                                <ul class="flex flex-wrap gap-3 justify-center md:justify-start">
+                                    {room.amenities
+                                        .slice(0, 4)
+                                        .map((amenity: any) => (
+                                            <li class="text-xs bg-white px-4 py-2 rounded-full text-stone-600 border border-stone-200 shadow-sm">
+                                                {amenity}
+                                            </li>
+                                        ))}
+                                </ul>
+                            </div>
+
+                            <a
+                                href={`/habitaciones/${room.slug}`}
+                                class="inline-flex items-center gap-2 text-patagonia-deep font-medium border-b border-patagonia-deep pb-1 hover:text-patagonia-lake hover:border-patagonia-lake transition-colors"
+                            >
+                                Ver Detalles <ArrowRight size={16} />
+                            </a>
+                        </div>
+                    </article>
+                ))
+            }
+        </div>
+    </div>
+</Layout>

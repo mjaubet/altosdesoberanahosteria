@@ -1,0 +1,27 @@
+{
+  "title": "Galería de Imágenes",
+  "intro": "Recorra nuestros espacios, entorno y detalles que hacen de Altos de Soberana un lugar único.",
+  "headerImage": "/images/uploads/frente-nuevo.jpg",
+  "images": [
+    {
+      "image": "/images/uploads/frente-hosteria-1.jpg",
+      "alt": "Hermoso entorno",
+      "category": "Entorno"
+    },
+    {
+      "image": "/images/uploads/vista-noche-2.jpg",
+      "category": "Entorno",
+      "alt": "Entorno"
+    },
+    {
+      "image": "/images/uploads/twin-web.jpg",
+      "category": "Habitaciones",
+      "alt": "Single"
+    },
+    {
+      "image": "/images/uploads/cena-salon.jpg",
+      "alt": "Cena en la hostería",
+      "category": "Interiores"
+    }
+  ]
+}
