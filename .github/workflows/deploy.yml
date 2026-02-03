@@ -12,10 +12,10 @@ jobs:
     
     steps:
       - name: Checkout code
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Deploy to VPS
-        uses: appleboy/ssh-action@master
+        uses: appleboy/ssh-action@v1.0.3
         with:
           host: ${{ secrets.VPS_HOST }}
           username: ${{ secrets.VPS_USER }}
@@ -24,8 +24,7 @@ jobs:
             export NVM_DIR="$HOME/.nvm"
             [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
             cd /home/altosdesoberanacalafate/htdocs
-            git pull origin main
+            git fetch origin main
+            git reset --hard origin/main
             npm install
-            rm -rf dist
-            npm run build
-            pm2 restart altosdesoberana
+            npm run build && pm2 restart altosdesoberana || echo "Build failed, not restarting"
