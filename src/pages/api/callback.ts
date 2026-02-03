@@ -33,8 +33,11 @@ export const GET: APIRoute = async ({ request, url }) => {
         const token = data.access_token;
 
         if (!token) {
+            console.error("[Callback] Error from GitHub:", data);
             return new Response("Provider Error: " + JSON.stringify(data), { status: 500 });
         }
+
+        console.log("[Callback] Successfully retrieved token");
 
         const content = {
             token,
