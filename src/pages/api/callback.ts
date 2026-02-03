@@ -8,12 +8,14 @@ export const GET: APIRoute = async ({ request, url }) => {
         return new Response("No code provided", { status: 400 });
     }
 
-    const client_id = import.meta.env.OAUTH_CLIENT_ID;
-    const client_secret = import.meta.env.OAUTH_CLIENT_SECRET;
+    const client_id = process.env.OAUTH_CLIENT_ID || import.meta.env.OAUTH_CLIENT_ID;
+    const client_secret = process.env.OAUTH_CLIENT_SECRET || import.meta.env.OAUTH_CLIENT_SECRET;
 
     if (!client_id || !client_secret) {
+        console.error("[Callback] Missing OAUTH credentials");
         return new Response("Missing OAUTH credentials", { status: 500 });
     }
+
 
     try {
         const response = await fetch('https://github.com/login/oauth/access_token', {
