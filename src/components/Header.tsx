@@ -35,14 +35,14 @@ export default function Header({ logo }: HeaderProps) {
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
                 <a href="/" className="flex items-center gap-2">
-                    {logo ? (
+                    {logo && logo.trim() !== "" ? (
                         <img
                             src={logo}
                             alt="Altos de Soberana"
                             className="h-12 w-auto object-contain transition-all"
                         />
                     ) : (
-                        <span className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white drop-shadow-md'
+                        <span className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white'
                             }`}>
                             Altos de Soberana
                         </span>
