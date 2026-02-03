@@ -11,7 +11,11 @@ const LINKS = [
     { name: 'Contacto', href: '/contacto' },
 ];
 
-export default function Header() {
+interface HeaderProps {
+    logo?: string;
+}
+
+export default function Header({ logo }: HeaderProps) {
     const [isOpen, setIsOpen] = useState(false);
     const [scrolled, setScrolled] = useState(false);
 
@@ -30,9 +34,20 @@ export default function Header() {
         >
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
-                <a href="/" className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white drop-shadow-md'
-                    }`}>
-                    Altos de Soberana
+                <a href="/" className="flex items-center gap-2">
+                    {logo ? (
+                        <img
+                            src={logo}
+                            alt="Altos de Soberana"
+                            className={`h-12 w-auto object-contain transition-all ${scrolled ? '' : 'brightness-0 invert'
+                                }`}
+                        />
+                    ) : (
+                        <span className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white drop-shadow-md'
+                            }`}>
+                            Altos de Soberana
+                        </span>
+                    )}
                 </a>
 
                 {/* Desktop Nav */}

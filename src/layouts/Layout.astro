@@ -74,11 +74,12 @@ const jsonLd = {
             type="application/ld+json"
             set:html={JSON.stringify(jsonLd)}
         />
-        <script src="https://identity.netlify.com/v1/netlify-identity-widget.js"
-        ></script>
     </head>
     <body class="antialiased text-stone-600 bg-patagonia-snow font-sans">
-        <Header client:load />
+        <Header
+            client:load
+            logo={settings.logo}
+        />
 
         <main>
             <slot />

@@ -25,5 +25,6 @@ jobs:
             cd /home/altosdesoberanacalafate/htdocs
             git pull origin main
             npm install
+            rm -rf dist
             npm run build
-            pm2 restart altosdesoberana || pm2 start npm --name "altosdesoberana" -- start
+            pm2 restart altosdesoberana
