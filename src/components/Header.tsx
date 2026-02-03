@@ -44,7 +44,7 @@ export default function Header({ logo }: HeaderProps) {
                     ) : (
                         <span className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white'
                             }`}>
-                            Altos de Soberana.
+                            Altos de Soberana
                         </span>
                     )}
                 </a>
