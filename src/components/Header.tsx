@@ -4,7 +4,7 @@ import { Menu, X } from 'lucide-react';
 
 const LINKS = [
     { name: 'Inicio', href: '/' },
-    { name: 'Hostería', href: '/hosteria' },
+    { name: 'Hosteríaa', href: '/hosteria' },
     { name: 'Habitaciones', href: '/habitaciones' },
     { name: 'Servicios', href: '/servicios' },
     { name: 'Galería', href: '/galeria' },
