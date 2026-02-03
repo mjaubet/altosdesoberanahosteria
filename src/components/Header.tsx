@@ -39,8 +39,7 @@ export default function Header({ logo }: HeaderProps) {
                         <img
                             src={logo}
                             alt="Altos de Soberana"
-                            className={`h-12 w-auto object-contain transition-all ${scrolled ? '' : 'brightness-0 invert'
-                                }`}
+                            className="h-12 w-auto object-contain transition-all"
                         />
                     ) : (
                         <span className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white drop-shadow-md'
