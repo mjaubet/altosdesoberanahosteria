@@ -20,7 +20,9 @@ jobs:
           username: ${{ secrets.VPS_USER }}
           key: ${{ secrets.VPS_SSH_KEY }}
           script: |
-            cd /var/www/altosdesoberanacalafate.com.ar
+            export NVM_DIR="$HOME/.nvm"
+            [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" 
+            cd /home/altosdesoberanacalafate/htdocs
             git pull origin main
             npm install
             npm run build
