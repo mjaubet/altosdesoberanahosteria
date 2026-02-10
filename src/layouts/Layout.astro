@@ -1,6 +1,7 @@
 ---
 import { SEO } from 'astro-seo';
 import Header from '../components/Header';
+import FooterLogo from '../components/FooterLogo';
 import settings from '../content/settings/global.json';
 import '../styles/global.css';
 
@@ -88,9 +89,12 @@ const jsonLd = {
         <footer class="bg-patagonia-deep text-patagonia-sand py-16">
             <div class="container mx-auto px-6 grid md:grid-cols-3 gap-12">
                 <div>
-                    <h3 class="font-serif text-2xl mb-6 text-white">
-                        Altos de Soberana
-                    </h3>
+                    <FooterLogo
+                        client:load
+                        src={settings.logo}
+                        alt="Altos de Soberana"
+                        className="h-16 w-[220px] opacity-80 mb-6"
+                    />
                     <p class="text-sm opacity-80 leading-relaxed max-w-xs">
                         La calidez de la Patagonia Argentina en un entorno único
                         frente al Lago Argentino.
