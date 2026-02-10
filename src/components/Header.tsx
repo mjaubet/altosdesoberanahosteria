@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Menu, X } from 'lucide-react';
+import LogoSVG from './LogoSVG';
 
 const LINKS = [
     { name: 'Inicio', href: '/' },
@@ -27,6 +28,10 @@ export default function Header({ logo }: HeaderProps) {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
+    // Detect if logo is SVG or other image format
+    const isSVG = logo && logo.trim() !== "" && logo.toLowerCase().endsWith('.svg');
+    const hasLogo = logo && logo.trim() !== "";
+
     return (
         <header
             className={`fixed top-0 left-0 right-0 z-40 transition-all duration-500 ${scrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
@@ -35,12 +40,21 @@ export default function Header({ logo }: HeaderProps) {
             <div className="container mx-auto px-6 flex justify-between items-center">
                 {/* Logo */}
                 <a href="/" className="flex items-center gap-2">
-                    {logo && logo.trim() !== "" ? (
-                        <img
-                            src={logo}
-                            alt="Altos de Soberana"
-                            className="h-12 w-auto object-contain transition-all"
-                        />
+                    {hasLogo ? (
+                        isSVG ? (
+                            <LogoSVG
+                                src={logo}
+                                alt="Altos de Soberana"
+                                className={`h-12 w-48 ${scrolled ? '!h3 !w-40' : ''}`}
+                                isScrolled={scrolled}
+                            />
+                        ) : (
+                            <img
+                                src={logo}
+                                alt="Altos de Soberana"
+                                className="h-12 w-auto object-contain transition-all"
+                            />
+                        )
                     ) : (
                         <span className={`text-2xl font-serif font-bold tracking-tighter transition-colors ${scrolled ? 'text-patagonia-deep' : 'text-white'
                             }`}>
@@ -55,7 +69,7 @@ export default function Header({ logo }: HeaderProps) {
                         <a
                             key={link.name}
                             href={link.href}
-                            className={`text-sm font-medium tracking-wide uppercase hover:text-patagonia-lake transition-colors ${scrolled ? 'text-stone-600' : 'text-white/90 hover:text-white drop-shadow-sm'
+                            className={`text-sm font-medium tracking-wide uppercase hover:text-patagonia-lake transition-colors ${scrolled ? 'text-stone-600' : 'text-white/90 hover:text-white drop-shadow-sm '
                                 }`}
                         >
                             {link.name}
