@@ -4,11 +4,6 @@
   "headerImage": "/images/uploads/frente-nuevo.jpg",
   "images": [
     {
-      "image": "/images/uploads/frente-hosteria-1.jpg",
-      "alt": "Hermoso entorno",
-      "category": "Entorno"
-    },
-    {
       "image": "/images/uploads/vista-noche-2.jpg",
       "category": "Entorno",
       "alt": "Entorno"
