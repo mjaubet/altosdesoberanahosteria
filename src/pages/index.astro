@@ -7,7 +7,10 @@ import homeData from '../content/pages/home.json';
 const rooms = await Astro.glob('../content/rooms/*.json');
 ---
 
-<Layout title="Home">
+<Layout
+	title="Home"
+	description="Vivi la experiencia patagónica en Altos de Soberana. Hostería en El Calafate con la mejor vista al Lago Argentino y atención personalizada."
+>
 	<HeroSlider
 		client:load
 		slides={homeData.heroSlider}

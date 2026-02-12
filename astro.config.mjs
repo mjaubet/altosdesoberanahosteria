@@ -4,8 +4,11 @@ import node from '@astrojs/node';
 import react from '@astrojs/react';
 import tailwind from '@astrojs/tailwind';
 
+import sitemap from '@astrojs/sitemap';
+
 // https://astro.build/config
 export default defineConfig({
+  site: 'https://altosdesoberanacalafate.com.ar',
   output: 'server',
   adapter: node({
     mode: 'standalone',
@@ -19,5 +22,6 @@ export default defineConfig({
     tailwind({
       applyBaseStyles: false,
     }),
+    sitemap(),
   ],
 });

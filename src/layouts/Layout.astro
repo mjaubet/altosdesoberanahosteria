@@ -9,43 +9,74 @@ interface Props {
     title: string;
     description?: string;
     image?: string;
+    canonical?: string;
+    type?: 'website' | 'article';
+    sd?: any;
 }
 
-const { title, description, image } = Astro.props;
+const {
+    title,
+    description,
+    image,
+    canonical,
+    type = 'website',
+    sd,
+} = Astro.props;
 
-const siteTitle = 'Hostería Altos de Soberana';
+const siteTitle = 'Altos de Soberana';
+const fullTitle = title === 'Home' ? siteTitle : `${title} | ${siteTitle}`;
 const siteDescription =
     description ||
-    'Hostería patagónica en El Calafate. Vista inigualable del Lago Argentino.';
+    'Hostería patagónica en El Calafate. Vista inigualable del Lago Argentino y calidez familiar.';
 const siteImage = image || settings.logo;
+const canonicalURL =
+    canonical || new URL(Astro.url.pathname, Astro.site).toString();
 
-const jsonLd = {
-    '@context': 'https://schema.org',
-    '@type': 'LodgingBusiness',
-    name: 'Hostería Altos de Soberana',
-    image: [siteImage],
-    telephone: settings.phone,
-    email: settings.email,
-    address: {
-        '@type': 'PostalAddress',
-        streetAddress: settings.address,
-        addressLocality: 'El Calafate',
-        addressRegion: 'Santa Cruz',
-        postalCode: '9405',
-        addressCountry: 'AR',
+const baseJsonLd = [
+    {
+        '@context': 'https://schema.org',
+        '@type': 'LodgingBusiness',
+        '@id': 'https://altosdesoberanacalafate.com.ar/#business',
+        name: 'Hostería Altos de Soberana',
+        image: [siteImage],
+        telephone: settings.phone,
+        email: settings.email,
+        address: {
+            '@type': 'PostalAddress',
+            streetAddress: settings.address,
+            addressLocality: 'El Calafate',
+            addressRegion: 'Santa Cruz',
+            postalCode: '9405',
+            addressCountry: 'AR',
+        },
+        url: 'https://altosdesoberanacalafate.com.ar/',
+        priceRange: '$$',
+        geo: {
+            '@type': 'GeoCoordinates',
+            latitude: -50.3392, // Example coordinates, should be verified
+            longitude: -72.2476,
+        },
     },
-    url: 'https://altosdesoberanacalafate.com.ar/',
-};
+    {
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        '@id': 'https://altosdesoberanacalafate.com.ar/#website',
+        url: 'https://altosdesoberanacalafate.com.ar/',
+        name: 'Hostería Altos de Soberana',
+        description: siteDescription,
+        publisher: {
+            '@id': 'https://altosdesoberanacalafate.com.ar/#business',
+        },
+    },
+];
+
+const jsonLd = sd ? [...baseJsonLd, sd] : baseJsonLd;
 ---
 
 <!doctype html>
 <html lang="es">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content={siteDescription}
-        />
         <meta
             name="viewport"
             content="width=device-width"
@@ -61,14 +92,33 @@ const jsonLd = {
         />
         <SEO
             title={title}
-            titleTemplate={`%s | ${siteTitle}`}
+            titleTemplate={title === 'Home' ? siteTitle : `%s | ${siteTitle}`}
             description={siteDescription}
+            canonical={canonicalURL}
             openGraph={{
                 basic: {
-                    title: title || siteTitle,
-                    type: 'website',
+                    title: fullTitle,
+                    type: type,
                     image: siteImage,
+                    url: canonicalURL,
                 },
+                optional: {
+                    siteName: siteTitle,
+                    description: siteDescription,
+                    locale: 'es_AR',
+                },
+            }}
+            twitter={{
+                card: 'summary_large_image',
+                title: fullTitle,
+                description: siteDescription,
+                image: siteImage,
+            }}
+            extend={{
+                meta: [
+                    { name: 'robots', content: 'index, follow' },
+                    { name: 'author', content: 'Matias Jaubet' },
+                ],
             }}
         />
         <script

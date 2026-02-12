@@ -13,11 +13,30 @@ const room = rooms.find((r) => r.slug === slug);
 if (!room) {
     return Astro.redirect('/404');
 }
+const roomSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'HotelRoom',
+    name: room.title,
+    description: room.shortDescription,
+    image: room.gallery[0]?.image,
+    occupancy: {
+        '@type': 'QuantitativeValue',
+        maxValue: room.capacity || 2,
+    },
+    amenityFeature: room.amenities.map((a: string) => ({
+        '@type': 'LocationFeatureSpecification',
+        name: a,
+        value: true,
+    })),
+};
 ---
 
 <Layout
     title={room.title}
+    description={room.shortDescription}
     image={room.gallery[0]?.image}
+    sd={roomSchema}
+    type="article"
 >
     <PageHero
         title={room.title}
@@ -42,11 +61,11 @@ if (!room) {
                         class="text-patagonia-lake font-bold tracking-widest uppercase text-xs mb-3 block"
                         >Detalles de la Habitación</span
                     >
-                    <h1
+                    <h2
                         class="text-4xl font-serif text-patagonia-deep mb-6 leading-tight"
                     >
                         {room.title}
-                    </h1>
+                    </h2>
 
                     <div
                         class="prose prose-stone text-stone-600 mb-8 font-light text-lg"

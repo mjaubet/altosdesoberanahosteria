@@ -13,6 +13,7 @@
   "dependencies": {
     "@astrojs/node": "^9.5.2",
     "@astrojs/react": "^4.4.2",
+    "@astrojs/sitemap": "^3.7.0",
     "@astrojs/tailwind": "^6.0.2",
     "astro": "^5.17.1",
     "astro-seo": "^1.1.0",
