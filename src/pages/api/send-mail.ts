@@ -36,7 +36,7 @@ export const POST: APIRoute = async ({ request }) => {
         // Send Mail
         await transporter.sendMail({
             from: `"Web Hosteria" <${import.meta.env.SMTP_USER}>`,
-            to: import.meta.env.SMTP_TO || import.meta.env.SMTP_USER, // Send to owner
+            to: process.env.SMTP_TO || import.meta.env.SMTP_TO || process.env.SMTP_USER || import.meta.env.SMTP_USER, // Send to owner or configured recipient
             subject: `Nueva Consulta de: ${name}`,
             text: `Nombre: ${name}\nEmail: ${email}\nTel: ${phone || 'N/A'}\n\nMensaje:\n${message}`,
             html: `
