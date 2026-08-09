@@ -1,8 +1,8 @@
 {
   "title": "Habitación Doble Twin",
   "slug": "doble-twin",
-  "shortDescription": "Dos camas individuales, perfecta para amigos o colegas.",
-  "longDescription": "La opción ideal para compartir viaje sin resignar comodidad. Cuenta con dos camas individuales sommier de alta densidad y espacio optimizado para el descanso tras un día de excursiones.",
+  "shortDescription": "Dos camas individuales.",
+  "longDescription": "La opción ideal para compartir viaje sin resignar comodidad. Cuenta con dos camas individuales y espacio optimizado para el descanso tras un día de excursiones, paseos, caminatas.",
   "amenities": [
     "2 Camas Twin",
     "Baño Privado",
@@ -18,6 +18,10 @@
     {
       "image": "/images/uploads/habitacion-twin.jpg",
       "alt": "Habitacion doble Twin"
+    },
+    {
+      "image": "twin-otra.jpg",
+      "alt": "twin-otra.jpg"
     }
   ]
 }
