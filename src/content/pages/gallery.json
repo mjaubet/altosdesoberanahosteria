@@ -27,6 +27,11 @@
       "image": "barra-blas.jpg",
       "alt": "barra-blas.jpg",
       "category": "Interiores"
+    },
+    {
+      "image": "cafe-deck-blas.jpg",
+      "alt": "cafe-deck-blas.jpg",
+      "category": "Entorno"
     }
   ]
 }
