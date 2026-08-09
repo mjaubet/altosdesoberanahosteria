@@ -62,6 +62,11 @@
       "image": "escalera-1.jpg",
       "alt": "escalera-1.jpg",
       "category": "Interiores"
+    },
+    {
+      "image": "foto-nueva.jpg",
+      "alt": "foto-nueva.jpg",
+      "category": "Entorno"
     }
   ]
 }
