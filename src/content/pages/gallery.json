@@ -17,6 +17,11 @@
       "image": "/images/uploads/cena-salon.jpg",
       "alt": "Cena en la hostería",
       "category": "Interiores"
+    },
+    {
+      "image": "frente-hosteria-4.jpg",
+      "alt": "frente-hosteria-4.jpg",
+      "category": "Entorno"
     }
   ]
 }
