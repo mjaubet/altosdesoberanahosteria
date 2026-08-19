@@ -30,6 +30,10 @@
     {
       "image": "baño-1-blas.jpg",
       "alt": "Baño en habitacon triple"
+    },
+    {
+      "image": "/images/uploads/baño-1-blas.jpg",
+      "alt": "baño"
     }
   ]
 }
