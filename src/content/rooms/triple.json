@@ -30,6 +30,14 @@
     {
       "image": "baño-1-blas.jpg",
       "alt": "Baño en habitacon triple"
+    },
+    {
+      "image": "/images/uploads/baño-1-blas.jpg",
+      "alt": "banio"
+    },
+    {
+      "image": "/images/uploads/captura-de-pantalla-2026-07-21-a-la-s-16.03.23.png",
+      "alt": "pesca"
     }
   ]
 }
