@@ -132,6 +132,11 @@
       "image": "/images/uploads/torta3.jpg",
       "alt": "torta3.jpg",
       "category": "Entorno"
+    },
+    {
+      "image": "/images/uploads/disco1.jpg",
+      "alt": "disco1.jpg",
+      "category": "Interiores"
     }
   ]
 }
