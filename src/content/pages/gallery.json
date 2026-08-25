@@ -117,6 +117,11 @@
       "image": "/images/uploads/salon-noche-matias.jpg",
       "alt": "salon-noche-matias.jpg",
       "category": "Interiores"
+    },
+    {
+      "image": "/images/uploads/torta1.jpg",
+      "alt": "torta1.jpg",
+      "category": "Entorno"
     }
   ]
 }
