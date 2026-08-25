@@ -122,6 +122,11 @@
       "image": "/images/uploads/torta1.jpg",
       "alt": "torta1.jpg",
       "category": "Entorno"
+    },
+    {
+      "image": "/images/uploads/torta4.jpg",
+      "alt": "torta4.jpg",
+      "category": "Entorno"
     }
   ]
 }
