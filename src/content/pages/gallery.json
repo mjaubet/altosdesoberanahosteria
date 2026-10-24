@@ -142,6 +142,11 @@
       "image": "desayuno2.jpg",
       "alt": "desayuno2.jpg",
       "category": "Interiores"
+    },
+    {
+      "image": "desayuno-1.jpg",
+      "alt": "desayuno-1.jpg",
+      "category": "Interiores"
     }
   ]
 }
