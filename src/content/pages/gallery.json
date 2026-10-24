@@ -144,18 +144,8 @@
       "category": "Interiores"
     },
     {
-      "image": "desayuno-1.jpg",
-      "alt": "desayuno-1.jpg",
-      "category": "Entorno"
-    },
-    {
-      "image": "arco-iris3.jpg",
+      "image": "/images/uploads/arco-iris3.jpg",
       "alt": "arco-iris3.jpg",
-      "category": "Entorno"
-    },
-    {
-      "image": "arco-iris4.jpg",
-      "alt": "arco-iris4.jpg",
       "category": "Entorno"
     }
   ]
